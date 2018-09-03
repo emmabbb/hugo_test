@@ -1,0 +1,11 @@
+{{- $var := .Scratch -}}
+{{- range where .Site.RegularPages ".Params.topics" "ne" nil -}} 
+	{{ range $key, $value := .Params.topics }}
+	{{- $var.Add "topics" (slice $value) -}}
+	{{ end }}
+	{{ end }} 
+	{{- $var.Set "topics" ($var.Get "topics" | uniq) -}}
+	{{- $topics := $var.Get "topics" }}
+	{{ range $topics }}
+    <a href="/news/topics{{ . | urlize | relLangURL }}">{{ . }}</a>
+    {{ end }}

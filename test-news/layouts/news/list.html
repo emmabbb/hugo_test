@@ -1,0 +1,19 @@
+{{ define "main" }}
+{{ partial "nav.html" . }}
+
+
+  {{ $paginator := .Paginate (where .Data.Pages "Type" "news") }}
+    {{ range $paginator.Pages }}
+      <div style="background-color: #eeeeee">news/list.html</div>
+      <a href="{{ .URL }}"><h1>{{ .Title }}</h1></a>
+      {{ .Content }}
+      <time>{{ .Date.Format "January 2006" }}</time>
+    {{ end }}
+	{{ if .Paginator.HasPrev }}
+		<a href="{{ .Paginator.Prev.URL }}" class="pagination">Previous Page</a>
+	{{ end }}
+	{{ .Paginator.PageNumber }} of {{ .Paginator.TotalPages }}
+	{{ if .Paginator.HasNext }}
+		<a href="{{ .Paginator.Next.URL }}" class="pagination">Next Page</a>
+	{{ end }}
+{{ end }}

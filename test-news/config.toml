@@ -1,0 +1,18 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "My Site"
+sectionPagesMenu = "main"
+paginate= "1"
+disableKinds = ["taxonomyTerm"]
+preserveTaxonomyNames = true
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  series = "series"
+  topic = "topics"
+
+
+[permalinks]
+  topics = "/news/topics/:slug/"
+  category = "/news/categories/:slug/"

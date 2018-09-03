@@ -1,0 +1,12 @@
+{{ define "main" }}
+	<div style="background-color: #eeeeee">news/single.html</div>
+	<a href="/news">Back to news</a>
+	<h2>{{ .Title }}</h2>
+	<time>{{ .Date.Format "January 2006" }}</time>
+	{{ .Content }}
+	{{ with .Params.topics }}
+	{{ range $key, $value := . }}
+    <a href="/news/topics{{ $value | urlize | relLangURL }}">{{ $value }}</a>
+  {{ end }}
+  {{ end }}
+{{ end }}
